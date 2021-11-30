@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     if @comment.save
      redirect_to prototype_path(@comment.prototype)
     else
-      @prototypes = Prototype.find(params[:prototype_id])
-      @comments = @prototypes.comments.includes(:user)
-     render :"prototypes/show"
+      @prototype = Prototype.find(params[:prototype_id])
+      @comments = @prototype.comments.includes(:user)
+     render "prototypes/show"
     end
   end
 
